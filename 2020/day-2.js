@@ -1003,13 +1003,19 @@ const input = [
 
 // Part 1
 const solution = (arr) => {
-  let result = arr.map((el) => {
-    let [range, letter, password] = el.split(" ");
-    let [min, max] = range.split("-");
-    let regex = new RegExp("[^" + letter + "]", "g");
-    const numOccurrences = password.replace(regex, "").length;
-    return numOccurrences >= min && numOccurrences <= max;
-  });
-  return result.filter((el) => el === true).length;
+  let result = arr
+    .map((el) => {
+      let [range, letter, password] = el.split(" ");
+      let [min, max] = range.split("-");
+      let regex = new RegExp("[^" + letter + "]", "g");
+      const numOccurrences = password.replace(regex, "").length;
+      return isValid(numOccurrences, min, max);
+    })
+    .filter((el) => el === true).length;
+  return result;
 };
+const isValid = (numOccurrences, min, max) =>
+  numOccurrences >= min && numOccurrences <= max;
+
 let result = solution(input);
+console.log(result)
