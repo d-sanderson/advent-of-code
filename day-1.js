@@ -200,9 +200,15 @@ const input = [
   1469,
   1888,
 ];
-let arr = [];
-input.forEach((int) =>
-  input.forEach((num) => 
-  input.forEach((zerp) => ((int + num + zerp) === 2020 ? console.log(num * int * zerp) : null))));
 
-console.log(arr);
+function sum2020(arr) {
+  let res = [];
+  arr.forEach((int) =>
+    arr.forEach((num) =>
+      arr.forEach((zerp) =>
+        int + num + zerp === 2020 && res.length < 3 ? res.push(num, int, zerp) : null
+      )
+    )
+  );
+  return [res.reduce((ac, cv) => ac * cv), res.reduce((ac, cv) => ac + cv)]
+}
