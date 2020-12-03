@@ -206,9 +206,32 @@ function sum2020(arr) {
   arr.forEach((int) =>
     arr.forEach((num) =>
       arr.forEach((zerp) =>
-        int + num + zerp === 2020 && res.length < 3 ? res.push(num, int, zerp) : null
+        int + num + zerp === 2020 && res.length < 3
+          ? res.push(num, int, zerp)
+          : null
       )
     )
   );
-  return [res.reduce((ac, cv) => ac * cv), res.reduce((ac, cv) => ac + cv)]
+  return [res.reduce((ac, cv) => ac * cv), res.reduce((ac, cv) => ac + cv)];
 }
+
+const refactoredSolution = (arr) => {
+  let res = [];
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr.length; i++) {
+      for (var k = 0; k < arr.length; i++) {
+        if (i + j + k === 2020) {
+          res.push(i, j, k);
+          break;
+        }
+      }
+    }
+    return res;
+  }
+};
+
+
+
+
+let t = refactoredSolution(input)
+console.log(t)
