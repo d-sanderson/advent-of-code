@@ -229,9 +229,3 @@ const refactoredSolution = (arr) => {
     return res;
   }
 };
-
-
-
-
-let t = refactoredSolution(input)
-console.log(t)

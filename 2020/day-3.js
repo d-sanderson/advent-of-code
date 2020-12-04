@@ -333,9 +333,10 @@ const partOne = () => {
     input[i][currentPosition % 31] == TREE ? treesEncountered++ : null;
     currentPosition = currentPosition + 3;
   }
+  return treesEncountered
 };
-partOne();
-
+let result1 = partOne();
+console.log(result1)
 // Part Two
 slopes = [
   [1, 1],
@@ -348,7 +349,7 @@ slopes = [
 const calcTreesEncountered = (slope) => {
   let treesEncountered = 0;
   let currentPosition = slope[0];
-  let reduced = input.filter((el, i) => i % slope[1] == 0);
+  let reduced = input.filter((_, i) => i % slope[1] == 0)
   for (var i = 1; i < reduced.length; i++) {
     reduced[i][currentPosition % 31] == TREE ? treesEncountered++ : null;
     currentPosition = currentPosition + slope[0];
