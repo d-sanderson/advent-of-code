@@ -19,6 +19,7 @@
   "homepage": "https://github.com/d-sanderson/advent-of-code-2020#readme",
   "dependencies": {
     "chalk": "^4.1.0",
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.20"
   }
 }
