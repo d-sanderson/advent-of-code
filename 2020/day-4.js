@@ -35,3 +35,4 @@ const validate = (passports) => {
 
 
 let result = validate(passports)
+console.log(result.length)
