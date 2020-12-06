@@ -4,6 +4,51 @@ const _ = require("lodash");
 const text = fs.readFileSync("./day-4.txt").toString("utf-8");
 const lines = text.split("\n");
 
+// Part Two
+const isValidBirthYear = (byr) => 1920 <= byr && byr <= 2002;
+const isValidIssueYear = (year) => 2010 <= year && year <= 2020;
+const isValidExpYear = (eyr) => 2020 <= eyr && eyr <= 2030;
+const isValidHeight = (hgt) => {
+  if (hgt.includes("in")) {
+    return /\b((5[9]|6[0-9]|7[0-6])in)\b/.test(hgt);
+  }
+  if (hgt.includes("cm")) {
+    return /\b(1[5-8][0-9]cm|19[0-3]cm)\b/.test(hgt);
+  }
+};
+const isValidHairColor = (hcl) => {
+  regex = /(#[a-f|0-9]{6})/;
+  return regex.test(hcl);
+};
+const isValidEyeColor = (ecl) => {
+  const validEyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
+  return validEyeColors.includes(ecl);
+};
+const isValidPID = (pid) => !isNaN(pid) && pid.length === 9;
+
+function evaluateField(field) {
+  field = field.replace("\r", "")
+  const [key, value] = field.split(":");
+  switch (key) {
+    case "byr":
+      return isValidBirthYear(value);
+    case "iyr":
+      return isValidIssueYear(value);
+    case "eyr":
+      return isValidExpYear(value);
+    case "hgt":
+      return isValidHeight(value);
+    case "hcl":
+      return isValidHairColor(value);
+    case "ecl":
+      return isValidEyeColor(value);
+    case "pid":
+      return isValidPID(value);
+    default:
+      return "ignore";
+  }
+}
+
 // PART 1
 optionalFields = ["cid"];
 requiredFields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
@@ -13,13 +58,13 @@ count = 0;
 let validatePassport = (passport) => {
   let fields = passport
     .split(" ")
-    .map((el) => el.split(":")[0])
-    .filter((fieldName) => requiredFields.indexOf(fieldName) !== -1);
-  let isValid = fields.length >= requiredFields.length;
+    .map((el) => evaluateField(el))
+    .filter((el) => el == true);
+  let isValid = fields.length === requiredFields.length;
   return isValid;
 };
 lines.forEach((line) => {
-  let endOfPassport = line === "";
+  let endOfPassport = line === "\r";
   if (endOfPassport) {
     validatePassport(currentPassport) ? count++ : null;
     currentPassport = "";
@@ -28,23 +73,3 @@ lines.forEach((line) => {
   }
 });
 console.log(count);
-
-// Part Two
-const isValidBirthYear = (byr) => 1920 <= byr && byr <= 2002;
-const isValidIssueYear = (year) => 2010 <= year && year <= 2020;
-const isValidExpYear = (eyr) => 2020 <= eyr && eyr <= 2030;
-const isValidHeight = (hgt) => {
-let regex =
-};
-const isValidHairColor = (hcl) => {
-  regex = /(#[a-f|0-9]{6})/
-  return regex.test(hcl)
-};
-const isValidHairColor = (hcl) => hcl;
-const isValidEyeColor = (ecl) => {
-  const validEyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
-  validEyeColors.includes(ecl);
-};
-const isValidPID = (pid) => !isNaN(pid)&& pid.length === 9;
-
-
