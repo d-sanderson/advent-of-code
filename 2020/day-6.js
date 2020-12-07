@@ -2,16 +2,17 @@ const fs = require("fs");
 const _ = require("lodash");
 const text = fs.readFileSync("./day-6.txt").toString("utf-8");
 const lines = text.split("\n");
-
-const groups = []
+let count = 0;
 let currentGroup = "";
 lines.forEach((line) => {
-    let endOfGroup = line === "\r";
+    let endOfGroup = line === "";
     if (endOfGroup) {
-        console.log(currentGroup)
-    groups.push(currentGroup)
+      console.log(currentGroup)
+    let arr = [...new Set(currentGroup.split(''))]
+    count += arr.length
       currentGroup = "";
     } else {
-      currentGroup += ` ${line}`;
+      currentGroup += `${line}`;
     }
   });
+console.log(count)
