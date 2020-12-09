@@ -21,29 +21,30 @@ const lines = text.split("\n");
 let count = 0;
 let currentGroup = "";
 let res = [];
-lines.forEach((line) => {
+for (line of lines) {
   let endOfGroup = line === "\r";
   if (endOfGroup) {
-    let answers = currentGroup
+    let forms = currentGroup
       .trim()
       .replace(/\r?\n|\r/g, "")
       .split(" ");
-    let numPeeps = answers.length
+    let numPeeps = forms.length;
     let obj = {};
-    answers.forEach((ansr) => {
-      let ltrs = ansr.split("");
-      ltrs.forEach((ltr) => (obj[ltr] ? obj[ltr]++ : (obj[ltr] = 1)));
-    });
-    count = 0
+    for (let i = 0; i < forms.length; i++) {
+      let answers = forms[i].split("");
+      answers.forEach((ansr) => (obj[ansr] ? obj[ansr]++ : (obj[ansr] = 1)));
+    }
+    count = 0;
     for (key in obj) {
       if (obj[key] === numPeeps) {
-        count++
+        count++;
       }
     }
-    res.push(count)
+    res.push(count);
     currentGroup = "";
   } else {
     currentGroup += ` ${line}`;
   }
-});
-console.log(res.reduce((ac, cv) => ac + cv))
+}
+
+console.log(res.reduce((ac, cv) => ac + cv));
