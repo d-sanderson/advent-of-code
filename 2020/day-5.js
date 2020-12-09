@@ -24,7 +24,7 @@ for (const line of lines) {
     highestSeatId = seatId;
   }
 }
-// console.log("Highest seat ID:", highestSeatId);
+console.log("Highest seat ID:", highestSeatId);
 
 // PART 2
 seatIds = seatIds.sort((a, b) => a - b);
