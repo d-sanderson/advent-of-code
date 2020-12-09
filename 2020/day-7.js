@@ -5,6 +5,22 @@ const lines = text.split("\n");
 
 let bags = new Map();
 
+// Part 1
+for (line of lines) {
+  let [bag, contents] = line.split(" bags contain ");
+  contents = contents.split(", ").forEach((el) => {
+    let type = el
+      .slice(2, el.length - 1)
+      .replace(/ bags?/, "")
+      .replace(/ ba/, "")
+      .replace(".", "");
+    if (!bags.has(bag)) {
+      bags.set(bag, []);
+    }
+    bags.set(bag, [...bags.get(bag), type])
+  });
+}
+
 const hasShinyGold = (color) => {
   if(color === 'shiny gold') {
     return true
@@ -21,27 +37,10 @@ const hasShinyGold = (color) => {
   return false
 }
 
-
-for (line of lines) {
-  let [bag, contents] = line.split(" bags contain ");
-  contents = contents.split(", ").forEach((el) => {
-    let type = el
-      .slice(2, el.length - 1)
-      .replace(/ bags?/, "")
-      .replace(/ ba/, "")
-      .replace(".", "");
-    if (!bags.has(bag)) {
-      bags.set(bag, []);
-    }
-    bags.set(bag, [...bags.get(bag), type])
-  });
-}
-
 const types = bags.keys()
 let count = 0
 for(type of types) {
   if(hasShinyGold(type) && type !== 'shiny gold') {
-    console.log(type)
     count++
   }
 }
