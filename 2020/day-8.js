@@ -13,19 +13,16 @@ if(cmdsExecuted.includes(i)) {
   console.log(accumulator)
   break;
 }
+cmdsExecuted.push(i);
     if(instruction == 'acc') {
-      cmdsExecuted.push(i);
       accumulator += parseInt(step);
       i++;
     }
     if(instruction == 'jmp') {
-      cmdsExecuted.push(i);
       
       i+= parseInt(step);
     }
     if(instruction == "nop") {
-      cmdsExecuted.push(i);
       i++
     }
-  console.log(cmdsExecuted);
 }
