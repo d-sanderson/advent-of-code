@@ -2,12 +2,11 @@ const fs = require("fs");
 const _ = require("lodash");
 const text = fs.readFileSync("./day-8.txt").toString("utf-8");
 const lines = text.split("\n");
-const regex1 = /(-?\d+)/g;
-const regex2 = /^([\w\-]+)/;
+
+// Part 1
 let accumulator = 0;
 let i = 0;
 let cmdsExecuted = []
-
 while(i < lines.length) {
   const [instruction, step] = lines[i].split(" ");
 if(cmdsExecuted.includes(i)) {
