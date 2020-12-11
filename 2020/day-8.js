@@ -6,19 +6,27 @@ const regex1 = /(-?\d+)/g;
 const regex2 = /^([\w\-]+)/;
 let accumulator = 0;
 let i = 0;
+let cmdsExecuted = []
 
 while(i < lines.length) {
-  let cmdsExecuted = []
   const [instruction, step] = lines[i].split(" ");
-  if(instruction == 'acc') {
-    accumulator += parseInt(step);
-    i++;
-  }
-  if(instruction == 'jmp') {
-    i+= parseInt(step);
-  }
-  if(instruction == "nop") {
-    i++
-  }
-  console.log(accumulator, i, instruction);
+if(cmdsExecuted.includes(i)) {
+  console.log(accumulator)
+  break;
+}
+    if(instruction == 'acc') {
+      cmdsExecuted.push(i);
+      accumulator += parseInt(step);
+      i++;
+    }
+    if(instruction == 'jmp') {
+      cmdsExecuted.push(i);
+      
+      i+= parseInt(step);
+    }
+    if(instruction == "nop") {
+      cmdsExecuted.push(i);
+      i++
+    }
+  console.log(cmdsExecuted);
 }
