@@ -19,6 +19,7 @@ while (i < lines.length - 1) {
   }
   if (!arr.includes(parseInt(lines[i]))) {
     console.log(lines[i]);
+    break;
   }
   i++;
 }
