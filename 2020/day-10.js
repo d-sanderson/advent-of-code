@@ -7,7 +7,6 @@ const lines = text.split("\n").sort((a, b) => a - b);
 let diff1 = 1;
 let diff3 = 1;
 for (let i = 0; i < lines.length; i++) {
-  console.log(parseInt(lines[i]) - parseInt(lines[i - 1]) == 2)
   if (i > 0 && parseInt(lines[i]) - parseInt(lines[i - 1]) === 3) {
     diff3++;
   }
