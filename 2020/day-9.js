@@ -1,6 +1,4 @@
 const fs = require("fs");
-const { last } = require("lodash");
-const _ = require("lodash");
 const text = fs.readFileSync("./input/day-9.txt").toString("utf-8");
 const lines = text.split("\n");
 

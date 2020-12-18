@@ -1,4 +1,3 @@
-const { match } = require("assert");
 const fs = require("fs");
 const text = fs.readFileSync("./input/day-7.txt").toString("utf-8");
 const lines = text.split("\n");

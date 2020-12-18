@@ -1,6 +1,4 @@
 const fs = require("fs");
-const { last, first } = require("lodash");
-const _ = require("lodash");
 const text = fs.readFileSync("./input/day-11.txt").toString("utf-8");
 const lines = text.split("\n").sort((a, b) => a - b);
 
