@@ -1,10 +1,9 @@
 const fs = require("fs");
 const _ = require("lodash");
-const text = fs.readFileSync("./day-13.txt").toString("utf-8");
+const text = fs.readFileSync("./input/day-13.txt").toString("utf-8");
 const lines = text.split("\n");
 
 // Part One
-
 const [arrivalTimestamp, buses] = lines;
 const activeBuses = buses.split(",").filter((el) => el !== "x");
 let closestBus = activeBuses

@@ -1,7 +1,7 @@
 const { Console } = require("console");
 const fs = require("fs");
 const _ = require("lodash");
-const input = fs.readFileSync("./day-5.txt").toString("utf-8");
+const input = fs.readFileSync("./input/day-5.txt").toString("utf-8");
 
 function findSeatId(line) {
   const binary = line.replace(/[FL]/g, "0").replace(/[BR]/g, "1");

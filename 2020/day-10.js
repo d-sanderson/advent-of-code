@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { last, first } = require("lodash");
 const _ = require("lodash");
-const text = fs.readFileSync("./day-10.txt").toString("utf-8");
+const text = fs.readFileSync("./input/day-10.txt").toString("utf-8");
 const lines = text.split("\n").sort((a, b) => a - b);
 
 let diff1 = 1;

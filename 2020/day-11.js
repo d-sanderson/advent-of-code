@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { last, first } = require("lodash");
 const _ = require("lodash");
-const text = fs.readFileSync("./day-11.txt").toString("utf-8");
+const text = fs.readFileSync("./input/day-11.txt").toString("utf-8");
 const lines = text.split("\n").sort((a, b) => a - b);
 
 for (let i = 0; i < 2; i++) {
@@ -20,8 +20,7 @@ for (let i = 0; i < 2; i++) {
         b = lines[i + 1][idx];
         dbl = lines[i + 1][idx - 1];
         dbr = lines[i + 1][idx + 1];
-
-        console.log(seatOrFloor, t);
+        console.log({s: seatOrFloor, t: t}, idx);
       }
     }
   });
