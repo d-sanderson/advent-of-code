@@ -3,17 +3,18 @@ const _ = require("lodash");
 const text = fs.readFileSync("./day-13.txt").toString("utf-8");
 const lines = text.split("\n");
 
-const [timestamp, buses] = lines;
+// Part One
 
+const [arrivalTimestamp, buses] = lines;
 const activeBuses = buses.split(",").filter((el) => el !== "x");
-let closest = activeBuses
+let closestBus = activeBuses
   .map((el) => {
-    return { res: Math.floor(timestamp / el) * el + parseInt(el), id: el };
+    return { arrival: Math.floor(arrivalTimestamp / el) * el + parseInt(el), id: parseInt(el) };
   })
-  .sort((a, b) => a.res - b.res)
+  .sort((a, b) => a.arrival - b.arrival)
   .reduce((prev, curr) => {
-    return Math.abs(curr - timestamp) < Math.abs(prev - timestamp)
+    return Math.abs(curr - arrivalTimestamp) < Math.abs(prev - arrivalTimestamp)
       ? curr
       : prev;
   });
-console.log((closest.res - timestamp) * 421);
+console.log((closestBus.arrival - arrivalTimestamp) * closestBus.id);
