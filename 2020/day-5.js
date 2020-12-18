@@ -1,6 +1,4 @@
-const { Console } = require("console");
 const fs = require("fs");
-const _ = require("lodash");
 const input = fs.readFileSync("./input/day-5.txt").toString("utf-8");
 
 function findSeatId(line) {
